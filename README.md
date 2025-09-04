@@ -1,22 +1,16 @@
-#  Calculadora de CDT
+###  Calculadora de CDT
 
-Aplicación web sencilla para calcular el rendimiento de un **Certificado de Depósito a Término (CDT)** con **interés simple o compuesto**.  
+Una calculadora web simple y elegante para calcular rendimientos de Certificados de Depósito a Término (CDT) con interés simple y compuesto.
 
-El usuario ingresa el capital inicial, la tasa de interés anual, el tiempo en años y el tipo de interés, y la aplicación muestra el monto final y el interés ganado.
+##  Características
 
----
-
-## Tecnologías
-
-- **HTML5** → estructura de la aplicación  
-- **CSS3** → estilos básicos  
-- **JavaScript (Vanilla)** → lógica de cálculo  
-- **Nginx** (para despliegue en AWS EC2)  
+- **Cálculo de interés simple y compuesto**: Elige entre dos tipos de capitalización
+- **Interfaz intuitiva**: Diseño modernonsivo
+- **Moneda local**: Configurado para pesos colo y respombianos (COP)
+- **Resultados detallados**: Muestra el monto final y el interés ganado
+- **Validación de datos**: Verifica que todos los campos contengan valores válidos
 
 ---
-
-## Estructura del proyecto
-
 ## Estructura del proyecto
 
 ```bash
@@ -25,6 +19,55 @@ calculadora-cdt/
 ├── style.css    # Estilos de la interfaz
 └── app.js       # Lógica de cálculo
 ```
+## Instalación y uso
+
+1. **Clona el repositorio**:
+   ```bash
+   git clone https://github.com/usuario/calculadora-cdt.git
+   ```
+
+2. **Navega al directorio**:
+   ```bash
+   cd calculadora-cdt
+   ```
+
+3. **Abre en el navegador**:
+   - Simplemente abre el archivo `index.html` en tu navegador web preferido
+   - O usa un servidor local como Live Server en VS Code
+
+## Cómo usar
+
+1. **Ingresa el capital inicial** en pesos colombianos (COP)
+2. **Especifica la tasa de interés anual** en porcentaje
+3. **Define el tiempo** de inversión en años
+4. **Selecciona el tipo de interés**:
+   - **Simple**: El interés se calcula solo sobre el capital inicial
+   - **Compuesto**: El interés se reinvierte y genera interés adicional
+5. **Haz clic en "Calcular"** para ver los resultados
+
+## Fórmulas utilizadas
+
+### Interés Simple
+```
+A = C × (1 + r × t)
+```
+
+### Interés Compuesto
+```
+A = C × (1 + r)^t
+```
+Donde:
+- **A** = Monto final
+- **C** = Capital inicial
+- **r** = Tasa de interés anual (decimal)
+- **t** = Tiempo en años
+
+## Tecnologías
+
+- **HTML5** → estructura de la aplicación  
+- **CSS3** → estilos básicos  
+- **JavaScript (Vanilla)** → lógica de cálculo  
+- **Nginx** (para despliegue en AWS EC2)  
 
 ---
 
@@ -109,8 +152,4 @@ La CLI de AWS no estaba instalada.
 ```bash
 sudo apt update
 sudo apt install awscli -y
-
-
-
-
 
