@@ -1,3 +1,5 @@
+![JavaScript CI](https://github.com/paulatatian/calculadora-cdt/workflows/JavaScript%20CI/badge.svg)
+
 ###  Calculadora de CDT
 
 Una calculadora web simple y elegante para calcular rendimientos de Certificados de Depósito a Término (CDT) con interés simple y compuesto.
