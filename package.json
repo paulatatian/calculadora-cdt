@@ -11,23 +11,3 @@
  "testEnvironment": "jsdom"
  }
 }
-
-{
-  "name": "calculadora-cdt",
-  "version": "1.0.0",
-  "description": "Calculadora de CDT con pruebas",
-  "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch"
-  },
-  "devDependencies": {
-    "jest": "^29.0.0",
-    "jest-environment-jsdom": "^29.0.0"
-  },
-  "jest": {
-    "testEnvironment": "jsdom",
-    "testMatch": [
-      "**/tests/**/*.test.js"
-    ]
-  }
-}
