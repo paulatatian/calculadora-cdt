@@ -1,3 +1,4 @@
+![AWS EC2](https://img.shields.io/badge/deploy-AWS%20EC2-orange?logo=amazon-aws) 
 ![JavaScript CI](https://github.com/paulatatian/calculadora-cdt/workflows/JavaScript%20CI/badge.svg)
 ![Docker](https://img.shields.io/badge/Docker-Ready-blue?logo=docker)
 
