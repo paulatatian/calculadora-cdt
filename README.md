@@ -1,4 +1,6 @@
 ![JavaScript CI](https://github.com/paulatatian/calculadora-cdt/workflows/JavaScript%20CI/badge.svg)
+![Docker](https://img.shields.io/badge/Docker-Ready-blue?logo=docker)
+
 
 ###  Calculadora de CDT
 
