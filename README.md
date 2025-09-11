@@ -142,7 +142,7 @@ sudo rm /etc/nginx/sites-enabled/default
 
 
 
-#### Usando Docker 
+## Usando Docker 
 1. Construye la imagen:
 ```bash
 docker build -t calculadora-cdt .
