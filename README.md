@@ -140,6 +140,74 @@ sudo rm /etc/nginx/sites-enabled/default
 ```
 
 
+
+
+#### Usando Docker 
+1. Construye la imagen:
+```bash
+docker build -t calculadora-cdt .
+```
+
+2. Ejecuta el contenedor:
+```bash
+docker run -d -p 8080:80 --name cdt-app calculadora-cdt
+```
+
+3. Accede a la aplicación en: `http://localhost:8080`
+
+#### Comandos Docker Útiles
+```bash
+# Ver contenedores en ejecución
+docker ps
+
+# Detener el contenedor
+docker stop cdt-app
+
+# Eliminar el contenedor
+docker rm cdt-app
+
+# Ver logs del contenedor
+docker logs cdt-app
+
+# Acceder al contenedor
+docker exec -it cdt-app /bin/bash
+```
+
+## Despliegue con Docker
+
+### Configuración de Producción
+
+El proyecto incluye una configuración Docker optimizada para producción usando Nginx como servidor web:
+
+**Dockerfile:**
+```dockerfile
+# Build stage
+FROM node:18-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+
+# Production stage
+FROM nginx:alpine
+COPY --from=builder /app/src /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+**docker-compose.yml:**
+```yaml
+version: '3.8'
+services:
+  calculadora-cdt:
+    build: .
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+```
+
 # 🛠️ Registro de Errores y Soluciones - Despliegue en AWS
 
 Este documento recopila los errores más comunes que surgieron durante el despliegue de la aplicación en **AWS EC2**, incluyendo configuración de servidor, instalación de dependencias y problemas de compilación.
