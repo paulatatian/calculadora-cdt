@@ -140,7 +140,155 @@ sudo rm /etc/nginx/sites-enabled/default
 ```
 
 
+#  CI/CD - Integración y Despliegue Continuo
 
+Este proyecto implementa un pipeline de CI/CD automatizado usando **GitHub Actions** para garantizar la calidad del código mediante testing automatizado.
+
+---
+
+##  Pipeline de CI/CD
+
+###  Continuous Integration (CI)
+
+El workflow de **GitHub Actions** se ejecuta automáticamente en cada:
+- **Push** a la rama `main`
+- **Pull Request** hacia `main`
+
+#### Pasos del Pipeline CI:
+
+1. ** Checkout del código**
+   - Descarga el código fuente del repositorio
+
+2. ** Setup Node.js**
+   - Configura Node.js 
+   - Instala dependencias con `npm ci`
+
+3. ** Ejecución de Tests**
+   - Ejecuta tests unitarios con Jest
+   - Verifica la funcionalidad básica
+
+---
+
+##  Configuración de Testing
+
+**Framework:** Jest con jsdom environment
+
+**Archivo:** `package.json`
+```json
+{
+ "name": "my-app-tests",
+ "scripts": {
+ "test": "jest"
+ },
+ "devDependencies": {
+ "jest": "^29.0.0",
+ "jest-environment-jsdom": "^29.0.0"
+ },
+ "jest": {
+ "testEnvironment": "jsdom"
+ }
+}
+```
+
+**Ubicación de tests:** `test/basic.test.js`
+
+#### Ejecutar Tests Localmente:
+```bash
+# Instalar dependencias
+npm install
+
+# Ejecutar tests
+npm test
+```
+
+---
+
+## 🛠️ Tests Implementados
+
+### Test Básico Actual
+
+**Archivo:** `test/basic.test.js`
+```javascript
+describe('Basic Math Tests', () => {
+test('basic arithmetic should work', () => {
+expect(1 + 1).toBe(2);
+expect(2 * 3).toBe(6);
+});
+});
+```
+
+Este test valida operaciones matemáticas básicas que son fundamentales para los cálculos de la calculadora CDT.
+
+---
+
+## 🔧 Configuración del Workflow
+
+Para implementar GitHub Actions, necesitas crear:
+
+**Archivo:** `.github/workflows/ci.yml`
+```yaml
+name: JavaScript CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - run: npm ci
+    - run: npm test
+```
+
+---
+
+##  Beneficios del CI/CD Implementado
+
+### ** Calidad del Código:**
+- ✅ Tests automáticos en cada push
+- ✅ Validación de funciones matemáticas
+- ✅ Detección temprana de errores
+
+### ** Automatización:**
+- ✅ No hay intervención manual en testing
+- ✅ Feedback inmediato en Pull Requests
+- ✅ Badge de estado en tiempo real
+
+### ** Confiabilidad:**
+- ✅ Solo código testeado llega a main
+- ✅ Historial completo de builds
+- ✅ Prevención de regresiones
+
+---
+
+##  Comandos Útiles
+
+```bash
+# Instalar dependencias
+npm install
+
+# Ejecutar tests una vez
+npm test
+
+# Ver estructura del proyecto
+tree -I node_modules
+
+# Verificar archivos de configuración
+cat package.json
+cat test/basic.test.js
+```
 
 ## Usando Docker 
 1. Construye la imagen:
